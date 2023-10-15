@@ -7,8 +7,8 @@ class ThermalService():
 
     async def get_temperature(self):
         file_list = glob.glob('/sys/class/thermal/thermal_zone*/temp')
-        temp_array = []
 
+        temp_array = []
         for file_path in file_list:
             with open(file_path, 'r', encoding="unicode") as file:
                 temp_raw = file.read().strip()
