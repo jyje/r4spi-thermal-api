@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: raspberry-thermal-api
+  namespace: raspi-system
+  labels:
+    app: raspberry-thermal-api
+spec:
+  selector:
+    matchLabels:
+      app: raspberry-thermal-api
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: raspberry-thermal-api
+    spec:
+      containers:
+      - name: raspberry-thermal-api
+        image: jyje/raspberry-thermal-api:latest
+        ports:
+        - containerPort: 8000
